@@ -3,7 +3,7 @@
 @section('content')
     <a href="{{url("posts")}}" >Go back</a>
     <h1>{{$post->title}}</h1>
-    <img style="width: 100%" src="{{url("storage/cover_images/".$post->conver_image)}}" alt="">
+    {{-- <img style="width: 100%" src="{{url("storage/cover_images/".$post->conver_image)}}" alt=""> --}}
     <div>
         {!!$post->body!!}
     </div>

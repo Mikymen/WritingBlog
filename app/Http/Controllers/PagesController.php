@@ -3,13 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Artisan;
+use Illuminate\Support\Facades\Schema;
 
 class PagesController extends Controller
 {
     public function index(){
         $title="Welcome friends to Laravel APP";
-        //return view('pages.index', compact('title'));
-        return view('pages.index')->with('title',$title);
+        //return view('pages.index')->with('title',$title);
+        //Artisan::call('db:wipe');
+        try {
+            $schema =Schema::hasTable('posts');
+        } catch (\Throwable $th) {
+
+            Artisan::call('migrate', [
+                '--force' => true,
+                '--seed' => 1]);
+            
+
+        }finally{
+            return redirect('/home');
+        }
+        
+        
     }
     public function about(){
         $title="About Us";

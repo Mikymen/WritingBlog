@@ -11,10 +11,10 @@
         {{Form::Label('body',"Body")}}
         {{Form::textarea('body','',['class'=>'ckeditor form-control','placeholder'=>'Body text'])}}
     </div>
-    <div class="form-group">
+    {{-- <div class="form-group">
         Image load (Max. 2Mb) 
         {{Form::file('cover_image')}}
-    </div>
+    </div> --}}
     {{Form::submit('Submit',['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}
 @endsection

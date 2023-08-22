@@ -6,14 +6,14 @@
         @foreach ($posts as $post)
             <div class="card mb-3">
                 <div class="card-body">
-                  <h5 class="card-title"><a href="{{url("posts/".$post->id)}}">{{$post->title}}</a></h5>
-
+                  <h4 class="card-title"><a href="{{url("posts/".$post->id)}}">{{$post->title}}</a></h4>
+                  <p class="card-text"> {!!$post->body!!}</p>
                   <div class="row">
-                    <div class="col-md-4 col-sm-4">
+                    {{-- <div class="col-md-4 col-sm-4">
                         <img style="width: 100%" src="{{url("storage/cover_images/".$post->conver_image)}}" alt="">
-                    </div>
+                    </div> --}}
                     <div class="col-md-8 col-sm-8">
-                        <p class="card-text"> {!!$post->body!!}</p>
+                        
                     </div>
                   </div>
                   

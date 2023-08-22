@@ -20,5 +20,13 @@ class UserSeeder extends Seeder
             'created_at' => '2023-05-21 00:08:41',
             'updated_at' => '2023-05-21 00:09:24'
           ]);
+        DB::table('users')->insert([
+        'name' => 'user2',
+        'email' => 'user2@test.com',
+        'password' => '$2y$10$ghu3XNWe2wXA2V100RhjcOdIjHO5MUkjexr53lRsGC9EauwMAqwpK',
+        'created_at' => '2023-08-22 18:21:23',
+        'updated_at' => '2023-08-22 18:21:23'
+        ]);
+    
     }
 }
