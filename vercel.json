@@ -5,9 +5,13 @@
         { "src": "/public/storage/cover_images/**", "use": "@vercel/static" },
         { "src": "/resources/sass/**", "use": "@vercel/static" },
         { "src": "/resources/js/**", "use": "@vercel/static" },
-        { "src": "/build/**", "use": "@vercel/static" }
+        { "src": "/public/build/**", "use": "@vercel/static" }
     ],
     "rewrites": [
+        {
+            "source": "/build/assets/(.*)",
+            "destination": "public/build/assets/$1"
+        },
           {
               "source": "/(.*)",
               "destination": "/public/index.php"
