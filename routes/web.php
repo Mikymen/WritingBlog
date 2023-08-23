@@ -42,3 +42,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard']);
 Route::get('/', [App\Http\Controllers\PagesController::class, 'index']);
 Route::delete('/destroy/{id}', [HomeController::class,"destroy"] );
+
+Route::get('/recreate', [App\Http\Controllers\PagesController::class, 'recreate']);

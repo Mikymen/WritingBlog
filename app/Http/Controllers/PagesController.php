@@ -12,20 +12,11 @@ class PagesController extends Controller
         $title="Welcome friends to Laravel APP";
         //return view('pages.index')->with('title',$title);
         //Artisan::call('db:wipe');
-        try {
-            $schema =Schema::hasTable('posts');
-        } catch (\Throwable $th) {
-
-            Artisan::call('migrate', [
-                '--force' => true,
-                '--seed' => 1]);
-            
-
-        }finally{
-            return redirect('/home');
-        }
-        
-        
+        $this->RecreateBd();
+        return redirect('/home');
+    }
+    public function recreate(){
+        return $this->RecreateBd();
     }
     public function about(){
         $title="About Us";
@@ -48,5 +39,18 @@ class PagesController extends Controller
                 ]
         );
         return view('pages.services')->with($data);
+    }
+    public function RecreateBd(){
+        try {
+            $schema =Schema::hasTable('posts');
+            return  "Exists";
+        } catch (\Throwable $th) {
+
+            Artisan::call('migrate', [
+                '--force' => true,
+                '--seed' => 1]);
+            
+                return  "Created";
+        }
     }
 }
