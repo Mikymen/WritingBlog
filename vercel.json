@@ -4,7 +4,8 @@
         { "src": "/public/index.php", "use": "vercel-php@0.6.0" },
         { "src": "/public/storage/cover_images/**", "use": "@vercel/static" },
         { "src": "/resources/sass/**", "use": "@vercel/static" },
-        { "src": "/resources/js/**", "use": "@vercel/static" }
+        { "src": "/resources/js/**", "use": "@vercel/static" },
+        { "src": "/build/**", "use": "@vercel/static" }
     ],
     "rewrites": [
           {
