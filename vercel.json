@@ -2,13 +2,12 @@
     "version": 2,
     "builds": [
         { "src": "/public/index.php", "use": "vercel-php@0.6.0" },
-        { "src": "/public/**", "use": "@vercel/static" }
+        { "src": "/public/**", "use": "@vercel/static" },
+        { "src": "/public/storage/cover_images/**", "use": "@vercel/static" },
+        { "src": "/resources/sass/**", "use": "@vercel/static" },
+        { "src": "/resources/js/**", "use": "@vercel/static" }
     ],
     "rewrites": [
-          {
-              "source": "/(assets)/(.*)",
-              "destination": "public/$1/$2"
-          },
           {
               "source": "/(.*)",
               "destination": "/public/index.php"
