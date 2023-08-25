@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('title');
             $table->mediumText('body');
             $table->timestamps();
+            $table->string('conver_image'); 
+            $table->integer('user_id');    
         });
     }
 

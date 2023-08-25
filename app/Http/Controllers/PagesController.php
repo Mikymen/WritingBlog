@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Artisan;
 use Illuminate\Support\Facades\Schema;
+use Cloudinary\Configuration\Configuration;
+use Cloudinary\Cloudinary;
 
 class PagesController extends Controller
 {
@@ -51,6 +53,41 @@ class PagesController extends Controller
                 '--seed' => 1]);
             
                 return  "Created";
+        }
+    }
+
+    public function TestImage(){
+        return view('pages.testcloud');
+    }
+    public function TestCloud(Request $request){
+        $cloud_name=env('CL_CLOUD_NAME');
+        $api_key=env('CL_API_KEY');
+        $api_secret=env('CL_API_SECRET');
+
+        //Handle File Upload
+        if ($request->hasFile('cover_image')) {
+            //Get filename with the extension
+            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
+            //Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            //get just ext
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            //Filename to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            //upload image
+            //$path =$request->file('cover_image')->storeAs('public/cover_images',$fileNameToStore);
+            $cloudinary = new Cloudinary('cloudinary://'.$api_key.':'.$api_secret.'@'.$cloud_name.'?url[secure]=true&url[cname]=my_site.com');
+            $imgb64 ="data:@file/".$extension.";base64,".base64_encode(file_get_contents($request->file('cover_image')));
+            //return $image_file;
+            $image_name= $filename;
+            //$image_name="kitti";
+            try {
+                $response = $cloudinary->uploadApi()->upload($imgb64,  ["public_id" => $image_name, "folder" => "imgpub"]);
+                return redirect('/testimage')->with('success',"Saved at:  ". $response['secure_url']);
+            } catch (\Throwable $th) {
+                $error = ["MESSAGE"=> $th->getMessage(),"FILE" => $th->getFile(),"LINE" => $th->getLine()];
+                return redirect('/testimage')->with('error', print_r($error,true));
+            }            
         }
     }
 }

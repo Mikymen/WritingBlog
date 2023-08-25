@@ -44,3 +44,6 @@ Route::get('/', [App\Http\Controllers\PagesController::class, 'index']);
 Route::delete('/destroy/{id}', [HomeController::class,"destroy"] );
 
 Route::get('/recreate', [App\Http\Controllers\PagesController::class, 'recreate']);
+
+Route::get('/testimage', [App\Http\Controllers\PagesController::class, 'TestImage']);
+Route::post('/upload', [App\Http\Controllers\PagesController::class, 'TestCloud']);
