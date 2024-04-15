@@ -1,6 +1,6 @@
 @extends('layout.app')
  @section('content')
-    <h1 class="h1 text-center fw-bold pt-4 pb-4">Welcome to Writting Blog</h1>
+    <h1 class="h1 text-center fw-bold pt-4 pb-4">Welcome to Writing Blog</h1>
     <div class="row justify-content-center">
       <div class="col-sm-12 col-md-10" style="text-align: justify;">
          <p>
